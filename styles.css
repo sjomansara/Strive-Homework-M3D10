@@ -1,0 +1,53 @@
+body {
+    background-color:#262626 !important;
+}
+
+a {
+    text-decoration: none !important;
+    color: grey;
+}
+
+a:hover {
+    color: white;
+}
+
+h6 span { 
+    background-color: #424344; 
+    padding: 6px 10px 6px 10px;
+    border-radius: .2rem;
+}
+
+#sharp {
+    border-radius: 0 !important;
+  }
+
+  body, nav {
+    background-color: #221f1f;
+  }
+  .mybutton{
+    background-color: #221f1f;
+    border-color: #221f1f;
+    color:#808080;
+  }
+  .serviceButton{
+    background-color: #221f1f;
+    border-color: grey;
+    color:#808080;
+  }
+  a {
+    color: grey;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+    color: grey;
+  }
+  .container , .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+
+  #profileContainer {
+    display: flex;
+    justify-content: center;
+  }
