@@ -45,10 +45,9 @@ const getAllMovies = async () => {
                 <a href="/details.html?id=${allMoviesInCategory[j]._id}"><img id="cardImg" class="card" src="${allMoviesInCategory[j].imageUrl}" alt=""></img></a>
                   <div class="card-body">
                     <h5 class="card-title">${allMoviesInCategory[j].name}</h5>
-                            <p class="card-text">Category: ${allMoviesInCategory[j].category}</p>
                             <p class="card-text">Description: ${allMoviesInCategory[j].description}</p>
-                            <a href="/backoffice.html?id=${allMoviesInCategory[j]._id}&category=${allMoviesInCategory[j].category}" class="btn btn-dark btn-outline-light" id="editButton">Edit</a>
                             <button type="button" class="btn btn-danger" id="deleteButton" onclick="deleteMovie('${allMoviesInCategory[j]._id}')">Delete</button>
+                            <a href="/backoffice.html?id=${allMoviesInCategory[j]._id}&category=${allMoviesInCategory[j].category}" class="btn btn-dark btn-outline-light" id="editButton">Edit</a>
                   </div>
                   </div>`
                 division.innerHTML = template

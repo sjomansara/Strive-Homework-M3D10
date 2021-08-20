@@ -90,7 +90,7 @@ window.onload = async () => {
     if (movieId) {
         document.getElementById("name").value = movieDetails.name
         document.getElementById("description").value = movieDetails.description
-        document.getElementById("category").value = category.category
+        document.getElementById("category").value = movieDetails.category
         document.getElementById("image").value = movieDetails.imageUrl
     }
 }
