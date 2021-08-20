@@ -41,16 +41,16 @@ const getAllMovies = async () => {
             division.className = "row no-gutters text-center"
 
             for (let j = 0; j < allMoviesInCategory.length; j++) {
-                let template = `<div class="card m-3 text-light ml-2 movieCard" id="${allMoviesInCategory[j]._id}">
+                let template = `<div class="card m-2 text-light ml-2 movieCard" id="${allMoviesInCategory[j]._id}">
                 <a href="/details.html?id=${allMoviesInCategory[j]._id}"><img id="cardImg" class="card" src="${allMoviesInCategory[j].imageUrl}" alt=""></img></a>
                   <div class="card-body">
                     <h5 class="card-title">${allMoviesInCategory[j].name}</h5>
-                            <p class="card-text">Description: ${allMoviesInCategory[j].description}</p>
+                            <p class="card-text text-muted">${allMoviesInCategory[j].description}</p>
                             <button type="button" class="btn btn-danger" id="deleteButton" onclick="deleteMovie('${allMoviesInCategory[j]._id}')">Delete</button>
                             <a href="/backoffice.html?id=${allMoviesInCategory[j]._id}&category=${allMoviesInCategory[j].category}" class="btn btn-dark btn-outline-light" id="editButton">Edit</a>
                   </div>
                   </div>`
-                division.innerHTML = template
+                division.innerHTML += template
             }
             container.appendChild(heading)
             container.appendChild(division)
@@ -84,7 +84,7 @@ const displayMovie = (movies) => {
         // console.log(deleteMovie(movie._id))
         displayMovies.innerHTML += 
         `<div class="card m-3 movieCard" id="${movie._id}">
-        <a href="/details.html?id=${movie._id}"><img id="cardImg" class="card m-4" src="${movie.imageUrl}" alt=""></img></a>
+        <a href="/details.html?id=${movie._id}"><img id="cardImg" class="card mb-3" src="${movie.imageUrl}" alt=""></img></a>
           <div class="card-body">
             <h5 class="card-title">${movie.name}</h5>
                     <p class="card-text">Category: ${movie.category}</p>

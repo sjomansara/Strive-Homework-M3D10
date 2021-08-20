@@ -55,7 +55,7 @@ h6 span {
   /* CSS FOR M3D10 */
 
   .movieCard {
-    width: 275px;
+    width: 250px;
     height: 350px;
     padding: 0% !important;
     border: 0;
@@ -63,7 +63,7 @@ h6 span {
   }
 
   #cardImg {
-    width: 275px;
+    width: 250px;
     height: 160px;
     border: 0;
     border-radius: 0%;
