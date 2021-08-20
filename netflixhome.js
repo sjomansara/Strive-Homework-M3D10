@@ -19,12 +19,11 @@ const getAllCategories = async () => {
 }
 
 const getAllMovies = async () => {
-    const genres = await getAllCategories()
+    const categories = await getAllCategories()
     let movieList = []
-    console.log("genres is: ", genres[0])
-    for (let i = 0; i < genres.length; i++) {
-        const url = "https://striveschool-api.herokuapp.com/api/movies/" + genres[i]
-
+    console.log("genres is: ", categories[0])
+    for (let i = 0; i < categories.length; i++) {
+        const url = "https://striveschool-api.herokuapp.com/api/movies/" + categories[i]
         try {
             const response = await fetch (url, {
                 method: "GET",
@@ -34,10 +33,30 @@ const getAllMovies = async () => {
             })
             const allMoviesInCategory = await response.json()
             console.log("allMoviesInCategory is: ", allMoviesInCategory)
+            let container = document.getElementById("fluidContainer")
+            let heading = document.createElement("h4")
+            heading.className = "text-white mb-2 mt-4"
+            heading.innerText = categories[i]
+            let division = document.createElement("div")
+            division.className = "row no-gutters text-center"
 
             for (let j = 0; j < allMoviesInCategory.length; j++) {
-                movieList.push(allMoviesInCategory[j])
+                let template = `<div class="card m-3 text-light ml-2 movieCard" id="${allMoviesInCategory[j]._id}">
+                <a href="/details.html?id=${allMoviesInCategory[j]._id}"><img id="cardImg" class="card" src="${allMoviesInCategory[j].imageUrl}" alt=""></img></a>
+                  <div class="card-body">
+                    <h5 class="card-title">${allMoviesInCategory[j].name}</h5>
+                            <p class="card-text">Category: ${allMoviesInCategory[j].category}</p>
+                            <p class="card-text">Description: ${allMoviesInCategory[j].description}</p>
+                            <a href="/backoffice.html?id=${allMoviesInCategory[j]._id}&category=${allMoviesInCategory[j].category}" class="btn btn-dark btn-outline-light" id="editButton">Edit</a>
+                            <button type="button" class="btn btn-danger" id="deleteButton" onclick="deleteMovie('${allMoviesInCategory[j]._id}')">Delete</button>
+                  </div>
+                  </div>`
+                division.innerHTML = template
             }
+            container.appendChild(heading)
+            container.appendChild(division)
+            console.log(heading)
+            console.log(division)
         } catch (error) {
             console.log(error)
         } finally {
@@ -64,7 +83,6 @@ const displayMovie = (movies) => {
     movies.forEach(movie => {
         console.log(movie._id)
         // console.log(deleteMovie(movie._id))
-     
         displayMovies.innerHTML += 
         `<div class="card m-3 movieCard" id="${movie._id}">
         <a href="/details.html?id=${movie._id}"><img id="cardImg" class="card m-4" src="${movie.imageUrl}" alt=""></img></a>
@@ -72,7 +90,7 @@ const displayMovie = (movies) => {
             <h5 class="card-title">${movie.name}</h5>
                     <p class="card-text">Category: ${movie.category}</p>
                     <p class="card-text">Description: ${movie.description}</p>
-                    <a href="backoffice.html?id=${movie._id}" class="btn btn-dark btn-outline-light" id="editButton">Edit</a>
+                    <a href="/backoffice.html?id=${movie._id}&category=${movie.category}" class="btn btn-dark btn-outline-light" id="editButton">Edit</a>
                     <button type="button" class="btn btn-danger" id="deleteButton" onclick="deleteMovie('${movie._id}')">Delete</button>
           </div>
           </div>`

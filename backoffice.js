@@ -1,6 +1,9 @@
 const params = new URLSearchParams(location.search)
+console.log(params)
 const movieId = params.get("id")
-
+console.log("movieId is: ", movieId)
+const movieCategory = params.get("catgory")
+console.log("movieCategory is: ", movieCategory)
 let results = []
 
 const getMovie = async (url) => {
@@ -58,6 +61,7 @@ const handleSubmit = async function(event) {
 }
 
 window.onload = async () => {
+    console.log("movieCategory is: ", movieCategory)
     const submitButton = document.getElementById("submitButton")
 
     let editPage = document.getElementById("editPage")
@@ -81,12 +85,12 @@ window.onload = async () => {
     })
 
     const movieDetails = await response.json()
-    console.log(movieDetails)
+    console.log("movie details is: ", movieDetails)
     
     if (movieId) {
         document.getElementById("name").value = movieDetails.name
         document.getElementById("description").value = movieDetails.description
-        document.getElementById("category").value = category.brand
+        document.getElementById("category").value = category.category
         document.getElementById("image").value = movieDetails.imageUrl
     }
 }
